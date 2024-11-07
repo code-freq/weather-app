@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 WEATHER_API = "YOUR OPEN WEATHER MAP API KEY"
 MAPS_API = "YOUR GOOGLE MAPS API KEY"
+
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 def direction(deg):
