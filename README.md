@@ -48,11 +48,11 @@ A Flask-based weather application that provides real-time weather details and a 
 
 ## Screenshots
 
-![screenshot](assets/screenshot_1.png)
+![screenshot](assets/Screenshot_1.png)
 
-![screenshot](assets/screenshot_2.png)
+![screenshot](assets/Screenshot_2.png)
 
-![screenshot](assets/screenshot_3.png)
+![screenshot](assets/Screenshot_3.png)
 
 
 
