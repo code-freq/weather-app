@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Application</h1>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city" required>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        {% if weather_data %}
+            {% if weather_data.error %}
+                <p>{{ weather_data.error }}</p>
+            {% else %}
+                <div class="info">
+                    <h2>Weather in {{ weather_data.name }}</h2>
+
+                    <div class="data-row">
+                        <div class="data-item ">Weather: {{ weather_data.weather_desc }}</div>
+                        <div class="data-item">Temperature: {{ weather_data.temperature }}°C</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-item">Feels like: {{ weather_data.feels_like }}°C</div>
+                        <div class="data-item">Min Temperature: {{ weather_data.min_temp }}°C</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-item">Max Temperature: {{ weather_data.max_temp }}°C</div>
+                        <div class="data-item">Pressure: {{ weather_data.pressure }} hPa</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-item">Humidity: {{ weather_data.humidity }}%</div>
+                        <div class="data-item">Visibility: {{ weather_data.visibility }} m</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-item">Wind Speed: {{ weather_data.wind_speed }} m/s</div>
+                        <div class="data-item">Wind Direction: {{ weather_data.wind_dir }}</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-item">Cloudiness: {{ weather_data.cloudiness }}%</div>
+                        <div class="data-item">Sunrise: {{ weather_data.sunrise }}</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-item">Sunset: {{ weather_data.sunset }}</div>
+                        <div class="data-item">Time: {{ weather_data.time }}</div>
+                    </div>
+                </div>
+
+                <h3>Location Map</h3>
+                <a href="https://www.google.com/maps?q={{ weather_data.lat }},{{ weather_data.lon }}" target="_blank">
+                    <div class="map">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ weather_data.lat }},{{ weather_data.lon }}&zoom=10&size=500x300&maptype=roadmap&markers=color:red%7Clabel:L%7C{{ weather_data.lat }},{{ weather_data.lon }}&key={{ weather_data.api_key }}"
+                             alt="Map centered at {{ weather_data.lat }}, {{ weather_data.lon }}">
+                    </div>
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
